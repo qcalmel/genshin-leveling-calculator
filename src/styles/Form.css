@@ -1,0 +1,12 @@
+.form {
+    background-color: white;
+    width: 600px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 auto 10px auto;
+}
+.form-input{
+    text-align: center;
+    padding-bottom: 10px;
+}

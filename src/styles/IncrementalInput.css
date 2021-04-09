@@ -1,0 +1,11 @@
+.item-control {
+    margin: 0 auto;
+}
+.item-button {
+    font-weight: bold;
+
+}
+.item-input{
+    text-align: center;
+    width: 30px;
+}

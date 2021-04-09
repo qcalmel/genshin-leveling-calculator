@@ -1,0 +1,44 @@
+.item-img {
+    height: 70px;
+    width: 70px;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+.item-label {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0px 0px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 5px 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+    text-align: center;
+
+}
+
+.item {
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: capitalize;
+    position: relative;
+    border: gray solid 0px;
+    border-radius: 10px;
+    /*background-color: lightsteelblue;*/
+    background: linear-gradient(lightsteelblue, white);
+}
+.item-control {
+    margin: 0 auto;
+}
+.item-button {
+    font-weight: bold;
+
+}
+.item-input{
+    text-align: center;
+    width: 30px;
+}

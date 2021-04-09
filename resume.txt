@@ -1,0 +1,84 @@
+inputs : 
+		- worldLevel : 		int (0-8)			select
+		- actualLevel : 	int (1-89)			input
+		- isAscended :		bool				checkbox
+		- targetLevel : 	int (2-90)			input
+		- possessedMoras : 	int (0-999999999)	input
+		- possessedMaterials : [
+			- boss :		int (0-999)			input
+			- stone_2* : 	int (0-999)			input
+			- stone_3* : 	int (0-999)			input
+			- stone_4* :	int (0-999)			input
+			- stone_5* :	int (0-999)			input
+			]
+		- possessedBooks : [
+			- book_2* :		int (0-999)			input
+			- book_3* :		int (0-999)			input 
+			- book_4* :		int (0-999)			input
+			]
+		- refillPerDay : 	int (0-6)			input
+		
+consts : 
+		- resinRefill : [
+			- time 	= 8 (minute)
+			- amount 	= 1 (resin)
+			]
+		- moraCostByXp 		= 1/5
+		- leyLineCost		= 20 (resin)
+		- bossCost			= 40 (resin)
+		- primogemRefill : [
+			- amount		= 60
+			- cost			= []
+			]
+datas :
+		- ascensionCost (moras & materials cost by ascension level)
+		- books ( xp amount by book rarity)
+		- expByLvl ( total xp cost by lvl)
+		- materials ( list of boss materials)
+		- worldLevel ( materials drop rates by world level & ley line rewards amount)
+		- gameConst (amount of resin refill & refill time, primogem refill amount & cost,ley line & boss resin cost)
+		
+calculations :
+		- calculateXpCost = expByLvl[targetLevel] - expByLvl[actualLevel]
+		- calculateXpMorasCost = xpCost * moraCostByXp
+		- calculateAscensionMorasCost = (ascensionCost.maxLvl >= targetLevel).moras - (ascensionCost.minLvl <= actualLevel && ascensionCost.maxLvl >= actualLevel).moras
+		- calculateTotalMorasCost = ascensionMoraCost + xpMoraCost
+		- calculateAscensionMaterialsCost = (ascensionCost.maxLvl >= targetLevel).materials - (ascensionCost.minLvl <= actualLevel && ascensionCost.maxLvl >= actualLevel).materials
+		- calculateAscensionMaterialsRequired = ascensionMaterialsCost - ascensionMaterialsPossesed
+		- calculateResinPerDay = 24 * 60 / resinRefill.time * resinRefill.amount
+		- calculatePrimogemResinRefill = refillPerDay * primogemRefill.amount
+		- calculateTotalResinPerDay = resinPerDay + primogemResinRefill
+		- calculatePrimogemCost = primogemRefill.cost[refillPerDay]
+		- calculateLeyLineMoraRun = (totalMorasCost - possessedMoras)/worldLevel.leyLineMora
+		- calculateLeyLineResinCost(runs) = runs * gameConst.leyLineCost
+		- calculatePossesedBookXp = possessedBooks[book_2*] * books[book_2*].exp + possessedBooks[book_3*] * books[book_3*].exp + possessedBooks[book_4*] * books[book_4*].exp
+		- calculateLeyLineXpRun = (xpCost - possessedBooksXp) / worldLevel[worldLevel].leyLineXp
+		- calculateTimeCost(resinRequired) = resinRequired / (totalResinPerDay /24)
+		- calculateBossRun
+		
+outputs :
+		- xp : [
+			- runs -> calculateLeyLineXpRun
+			- resinCost -> calculateLeyLineResinCost(xp)
+			- timeCost -> calculateTimeCost(resinCost)
+			]
+		- moras : [
+			- runs -> calculateLeyLineMoraRun
+			- resinCost -> calculateLeyLineResinCost(xp)
+			- timeCost -> calculateTimeCost(resinCost)
+			]
+		- boss : [
+			- runs -> calculateBossRun
+			- resinCost ->
+			- timeCost -> calculateTimeCost(resinCost)
+			]
+		- total : [
+			- resinCost -> xp.resinCost + moras.resinCost + boss.resinCost
+			- timeCost -> xp.timeCost + moras.timeCost + boss.timeCost
+			]
+		- materialRequired -> calculateAscensionMaterialsRequired()
+		- xpCost -> calculateXp()
+		- morasCost -> 
+		- primogemCost -> calculatePrimogemCost()
+		
+	

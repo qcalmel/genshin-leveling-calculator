@@ -1,0 +1,9 @@
+.items {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.items-title {
+    text-align: center;
+}
