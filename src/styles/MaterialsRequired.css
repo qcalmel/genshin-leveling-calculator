@@ -9,26 +9,25 @@
 .material-img {
     height: 50px;
     display: block;
-
-
 }
 
 .material-qty {
-    color: white;
-    background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: mediumpurple;
+    background: #f6daac;
     padding: 2px;
     height: 20px;
     width: 20px;
-    font-size: small;
-    border-radius: 50% ;
+    font-weight: bold;
+    font-size: 14px;
+   border-bottom-right-radius: 8px;
     position: absolute;
     top: 0;
     left: 0;
-
 }
 
 .material-name {
-    background: white;
     display: inline-block;
-
 }

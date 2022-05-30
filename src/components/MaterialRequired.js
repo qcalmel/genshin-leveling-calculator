@@ -7,7 +7,11 @@ const MaterialRequired = ({materialsRequired}) => {
         const materialDetails = materials.find((item) => item.id === material)
         return (
             <div className="material" key={material}>
-                <div className="material-qty">{materialsRequired[material]}</div>
+                <div className="material-qty">
+                    <span>
+                        {materialsRequired[material]}
+                    </span>
+                </div>
                 <img className="material-img" src={materialDetails.img}/>
                 <span className="material-name">{materialDetails.name}</span>
             </div>
