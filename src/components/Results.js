@@ -133,28 +133,28 @@ const Results = ({data}) => {
                     <span>({primogemCostPerDay}<Icon iconName='primogem'/> /days)</span>
                 </div>
             </div>
-            <div className='result-item2'>
-                <div className='result-item-img'>
-                    <img  src={mora}/>
-                </div>
-                <div className='result-item-farm'>
-                    <div>{shortNumber(moraRequired)}</div>
-                    <div>{moraRun}</div>
-                    <div>{moraResinCost}</div>
-                    <div>{formatTime(moraTimeCost)}</div>
-                </div>
-            </div>
-            <div className='result-item2'>
-                <div className='result-item-img'>
-                    <img  src={expBook}/>
-                </div>
-                <div className='result-item-farm'>
-                    <div>~ {Math.ceil(expRequired / 20000)}</div>
-                    <div>{expRun}</div>
-                    <div>{expResinCost}</div>
-                    <div>{formatTime(expTimeCost)}</div>
-                </div>
-            </div>
+            {/*<div className='result-item2'>*/}
+            {/*    <div className='result-item-img'>*/}
+            {/*        <img  src={mora}/>*/}
+            {/*    </div>*/}
+            {/*    <div className='result-item-farm'>*/}
+            {/*        <div>{shortNumber(moraRequired)}</div>*/}
+            {/*        <div>{moraRun}</div>*/}
+            {/*        <div>{moraResinCost}</div>*/}
+            {/*        <div>{formatTime(moraTimeCost)}</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<div className='result-item2'>*/}
+            {/*    <div className='result-item-img'>*/}
+            {/*        <img  src={expBook}/>*/}
+            {/*    </div>*/}
+            {/*    <div className='result-item-farm'>*/}
+            {/*        <div>~ {Math.ceil(expRequired / 20000)}</div>*/}
+            {/*        <div>{expRun}</div>*/}
+            {/*        <div>{expResinCost}</div>*/}
+            {/*        <div>{formatTime(expTimeCost)}</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
